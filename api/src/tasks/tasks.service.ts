@@ -16,7 +16,10 @@ export class TasksService {
   }
 
   findAll(status?: Status) {
-    return this.primsa.task.findMany({ where: status ? { status } : {} });
+    return this.primsa.task.findMany({
+      where: status ? { status } : {},
+      orderBy: { created_at: 'desc' },
+    });
   }
 
   async findOne(id: number) {
