@@ -1,6 +1,6 @@
 "use client";
 
-import { Ghost } from "lucide-react";
+import { Ghost, TriangleExclamationPoint } from "lucide-react";
 
 import useTasks from "@/hooks/useTasks";
 
@@ -10,7 +10,17 @@ import { Empty, EmptyHeader, EmptyTitle, EmptyDescription } from "@/components/u
 export function Tasks() {
   const { isLoading, error, tasks, hasFilter } = useTasks();
 
-  if (error) return null;
+  if (error) {
+    return (
+      <Empty className="border-t border-solid rounded-none h-90.5">
+        <EmptyHeader>
+          <TriangleExclamationPoint className="text-destructive" />
+          <EmptyTitle>Failed</EmptyTitle>
+          <EmptyDescription>Something went wrong on server</EmptyDescription>
+        </EmptyHeader>
+      </Empty>
+    );
+  }
 
   if (isLoading) {
     return (
