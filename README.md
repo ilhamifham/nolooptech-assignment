@@ -31,8 +31,7 @@ Make sure the following tools are installed:
 ### 1. Clone the Repository
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
-cd task-manager
+git clone https://github.com/ilhamifham/nolooptech-assignment.git
 ```
 
 ### 2. Backend Setup (NestJS)
@@ -55,22 +54,6 @@ Create the environment file:
 cp .env.example .env
 ```
 
-Configure the environment variables in `api/.env`.
-
-#### Environment Variables
-
-| Variable     | Description                |
-| ------------ | -------------------------- |
-| DATABASE_URL | SQLite database connection |
-| PORT         | Backend API port           |
-
-Example:
-
-```env
-DATABASE_URL="file:./dev.db"
-PORT=3001
-```
-
 #### Prisma Setup
 
 Generate the Prisma Client:
@@ -84,10 +67,6 @@ Apply existing database migrations:
 ```bash
 npx prisma migrate deploy
 ```
-
-The SQLite database is configured through Prisma using the `DATABASE_URL` environment variable.
-
-If the repository includes the existing `dev.db` file, the application can use that database directly.
 
 #### Start the Backend
 
@@ -120,17 +99,7 @@ npm install
 Create the environment file:
 
 ```bash
-cp .env.example .env.local
-```
-
-Configure the frontend environment variables.
-
-#### Environment Variables
-
-Example:
-
-```env
-NEXT_PUBLIC_API_URL=http://localhost:3001
+cp .env.example .env
 ```
 
 #### Start the Frontend
@@ -145,50 +114,6 @@ The frontend will be available at:
 http://localhost:3000
 ```
 
-## Running the Application
-
-Follow these steps to run the complete application:
-
-1. Clone the repository.
-2. Install backend dependencies.
-3. Configure backend environment variables.
-4. Generate Prisma Client.
-5. Apply database migrations.
-6. Start the NestJS backend.
-7. Install frontend dependencies.
-8. Configure frontend environment variables.
-9. Start the Next.js frontend.
-10. Open http://localhost:3000.
-
-Make sure the backend is running before using the frontend.
-
-## Database
-
-This project uses SQLite with Prisma ORM.
-
-- Database provider: SQLite
-- Database file: `api/prisma/dev.db` (if committed)
-- Prisma schema: `api/prisma/schema.prisma`
-- Migration files: `api/prisma/migrations/`
-
-To generate Prisma Client:
-
-```bash
-npx prisma generate
-```
-
-To apply existing migrations:
-
-```bash
-npx prisma migrate deploy
-```
-
-To create a new migration during development:
-
-```bash
-npx prisma migrate dev --name migration_name
-```
-
 ## How I Used AI
 
 I used ChatGPT as an AI development assistant during the development of this project.
@@ -201,11 +126,3 @@ AI assistance was used for:
 - Reviewing implementation ideas and identifying potential improvements.
 
 I reviewed and modified the AI-generated suggestions to match the project requirements, existing architecture, and coding conventions. I also integrated, tested, and verified the final implementation.
-
-## Notes
-
-- Make sure all required environment variables are configured before starting the application.
-- Prisma Client must be generated before running the backend.
-- Ensure the database and migration files are available.
-- Do not commit sensitive credentials or production secrets.
-- The backend and frontend must both be running for the application to work correctly.
